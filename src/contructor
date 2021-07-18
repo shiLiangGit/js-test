@@ -1,0 +1,40 @@
+console.log('----------------------');
+console.warn('controctur 构造函数')
+function Handler() {
+
+}
+function Test() {
+  this.age = 32
+}
+// prototype 原型写法一：
+Test.prototype.name = '李明';
+// Test.prototype.sex = '男';
+// Test.prototype.run = function () {
+//   console.log(this.name + ' is running')
+// }
+// prototype 原型写法二：(实际开发中，通常都用写法二)
+// Test.prototype = {
+//   name: '李明',
+//   sex: '男',
+//   run: function () {
+//     console.log(this.name + ' is running')
+//   }
+// }
+
+var test = new Test();
+test.num = 1;
+console.log('Test：', Test)
+console.log('Test.prototype：', Test.prototype); // 输出 Test， 默认指向构造函数本身  Test, 支持重写
+console.log('test.__proto__：', test.__proto__); // 输出 Test， __proto__是在实例化对象下，值就是 Test.prototype
+Test.prototype = {
+  constructor: Handler   // 重写覆盖原指向Test的constructor
+}
+console.log('Test.prototype：', Test.prototype);  // 输出 Handler
+console.log('Test.prototype.constructor：', Test.prototype.constructor);  // 输出 function Test() {}, ==== Test
+console.log('test：', test)
+// test.run();
+
+
+console.log('-----------------------------');
+
+
