@@ -48,3 +48,5 @@ function func(a = 55) {
     console.log(arguments[0]);
 }
 func(10); // 10
+
+
